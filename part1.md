@@ -58,15 +58,25 @@
     * ex. <meta property="og:title" content="OO 블로그">
   
 ## Yarn Berry (with PnP)
-  * Yarn 2.x 이상의 버전 (기존 Yarn 1과 비교해 성능과 보안이 크게 개선된 패키지 매니저)
-  * PnP(Plug’n’Play)
-    * node_modules 없이 패키지를 관리하는 새로운 방식
-  * 특징
-    * node_modules/ 없음! (.pnp.cjs 파일로 패키지를 관리)
-    * 패키지 설치 속도가 기존 node_modules 방식보다 훨씬 빠름
-    * 모듈 탐색이 매우 빠름! (fs 시스템 탐색을 하지 않음)
-    * Zero-Installs (제로 인스톨) 지원
-      * 패키지가 .yarn/cache/에 압축된 상태로 저장
-      * .yarn/cache/에 패키지를 저장하므로, yarn install을 다시 할 필요 없음
-  * IDE에서 자동 완성(X) 문제가 발생할 수도 있음
-    * VSCode에서는 Yarn PnP SDK 플러그인 사용 (yarn dlx @yarnpkg/sdks vscode 실행)
+* Yarn 2.x 이상의 버전 (기존 Yarn 1과 비교해 성능과 보안이 크게 개선된 패키지 매니저)
+* PnP(Plug’n’Play)
+  * node_modules 없이 패키지를 관리하는 새로운 방식
+* 특징
+  * node_modules/ 없음! (.pnp.cjs 파일로 패키지를 관리)
+  * 패키지 설치 속도가 기존 node_modules 방식보다 훨씬 빠름
+  * 모듈 탐색이 매우 빠름! (fs 시스템 탐색을 하지 않음) => 탐색 비용 최적화
+    * 기존 npm 방식: fs 시스템을 재귀적으로 탐색 => 느림
+    * Yarn PnP 방식: .pnp.cjs에서 패키지 경로를 즉시 찾음 => 빠름
+  * Zero-Installs (제로 인스톨) 지원
+    * 패키지가 .yarn/cache/에 압축된 상태로 저장
+    * .yarn/cache/에 패키지를 저장하므로, yarn install을 다시 할 필요 없음
+* IDE에서 자동 완성 안되는 문제가 발생할 수도 있음
+  * VSCode에서는 Yarn PnP SDK 플러그인 사용 (yarn dlx @yarnpkg/sdks vscode 실행)
+* 설치
+  * yarn 설치 및 yarn berry 적용
+    * $ npm install -g yarn
+    * $ yarn set version berry    
+  * PnP 모드 활성화
+    * $ yarn config set nodeLinker pnp
+  * 패키지 설치 (.pnp.cjs 파일 생성됨)
+    * $ yarn install
