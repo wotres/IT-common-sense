@@ -76,7 +76,46 @@
   * yarn 설치 및 yarn berry 적용
     * $ npm install -g yarn
     * $ yarn set version berry    
-  * PnP 모드 활성화
+  * PnP 모드 활성화 (node module 대신 사용 명시)
     * $ yarn config set nodeLinker pnp
   * 패키지 설치 (.pnp.cjs 파일 생성됨)
     * $ yarn install
+  * .zip 내부의 파일을 직접 접근을 위해 ZipFS Plugin 설치
+  * Yarn PnP(Plug’n’Play) 환경에서 VSCode가 패키지를 정상적으로 인식할 수 있도록 설정
+    * $ yarn dlx @yarnpkg/sdks vscode
+  * .yarn/cache 폴더 안생기는경우 enableGlobalCache false 
+    * 
+    ```bash
+    enableGlobalCache: false
+    cacheFolder: .yarn/cache
+    ```
+
+## vim undo
+* i 입력 모드
+* u 되돌리기
+
+## nvm 사용
+### nvm 설치
+* https://github.com/nvm-sh/nvm
+* curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+* 설정
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+* shell restart
+  * $ source ~/.zshrc
+### node 설치 및 설정
+* 설치 할수 있는 node version 확인
+  * $ nvm ls-remote
+* 원하는 버전 설치
+  * $ nvm install v22.14.0
+* 확인
+  * $ nvm list
+  * $ node -v
+* 원하는 버전 선택
+  * $ nvm list
+  * $ nvm use v22.14.0
+* 글로벌 설정
+  * $ nvm use -g v22.14.0
