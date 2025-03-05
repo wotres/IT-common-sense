@@ -119,3 +119,19 @@ export NVM_DIR="$HOME/.nvm"
   * $ nvm use v22.14.0
 * 글로벌 설정
   * $ nvm use -g v22.14.0
+
+## REST 
+* REST는 웹에서 HTTP 기반으로 데이터를 깔끔하게 주고받는 규칙
+* 원칙
+  * 클라이언트(브라우저, 모바일 앱 등)-서버(API 제공자) 구조 => 분리
+  * 무상태(Stateless) 
+    * => 요청(Request) 간에 서버가 클라이언트의 상태를 기억하지 않아 매 요청마다 필요한 정보를 포함해야 함
+  * 캐시 가능(Cacheable)
+    * => 클라이언트는 응답을 캐싱하여 서버 부하를 줄일 수 있음
+  * 일관된 인터페이스(Uniform Interface)
+    * => API는 표준적인 HTTP 메서드와 URI를 사용
+  * 계층화(Layered System)
+    * => 클라이언트는 API 서버 외에 보안, 로드 밸런서 등의 중간 계층을 알 필요 없음
+* RESTful 은 REST 원칙을 따르는 API
+* 실시간성이 중요한 경우에는 효율적이지 않아 WebSocket 같은 양방향 통신 프로토콜 고려 (ex. 채팅 어플)
+
